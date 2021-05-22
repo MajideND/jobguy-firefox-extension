@@ -1,0 +1,31 @@
+{
+    "manifest_version": 2,
+    "name": "Jobguy Discover",
+    "version": "1.0",
+    "description": "Open source project to show workspace status on jobguy.\nافزونه اوپن سورس برای تشخیص وضعیت شرکت در جاب گای.",
+    "icons": {
+        "48": "images/logo_48.png",
+        "96": "images/logo_96.png"
+    },
+    "permissions": [
+        "tabs","<all_urls>"
+    ],
+    "browser_action": {
+        "default_icon": "images/logo_48.png",
+        "default_title": "Jobguy",
+        "default_popup": "html/popup.html"
+    },
+    "homepage_url": "https://majid.codes/jobguy-extension/",
+    "content_scripts": [
+        {
+            "matches": [
+                "*://jobinja.ir/*",
+                "*://quera.ir/*",
+                "*://jobvision.ir/*"
+            ],
+            "js": [
+                "js/main.js"
+            ]
+        }
+    ]
+}
