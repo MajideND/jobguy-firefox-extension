@@ -42,7 +42,7 @@ function jobguy_search(name) {
         $(".salary").text("یافت نشد");
         return;
       }
-      var company = data.data[0];
+      var company = data["data"][0];
       $(".company-name").text(company.name);
       $(".logo").attr("src", "https://media.jobguy.work" + company.logo);
       $(".salary").text(
