@@ -1,4 +1,17 @@
 # Jobguy Discover Extension V1.0
+Jobguy discover is an open-source based on jobguy.work API to receive company information from the popular Iranian job websites and find their information on Jobguy.
+
+Supported webpages:
+
+    Jobinja Company page
+    Jobinja Jobs
+    Jobvision Company page (open full view)
+    Jobvision Jobs (open full view)
+    Quera.ir Company Page
+
+
+We have used [jobguywork/backend](https://github.com/jobguywork/backend/) on Github to use API information.
+
 By [majid.codes](https://majid.codes)
 
 ## How to use?
