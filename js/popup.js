@@ -102,8 +102,19 @@ function onGot(data) {
   $(".link-to-jobguy").prop("disabled", true);
 }
 function onError(error) {
-  console.log(error);
+  // console.log(error);
 }
 const current_url = getCurrentURL().then(onGot, onError);
 
-console.log("change detected");
+$(document).on("click",".show-reviews",function () {
+  $(".reviews").show();
+  $(".interviews").hide();
+  $(".show-reviews").parent().addClass("is-active");
+  $(".show-interviews").parent().removeClass("is-active");
+});
+$(document).on("click",".show-interviews",function () {
+  $(".interviews").show();
+  $(".reviews").hide();
+  $(".show-interviews").parent().addClass("is-active");
+  $(".show-reviews").parent().removeClass("is-active");
+});

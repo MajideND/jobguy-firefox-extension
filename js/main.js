@@ -1,5 +1,3 @@
-"use strict";
-
 browser.runtime.onMessage.addListener(request => {
   var response = { status: false };
   if (request.web_type == "jobinja_1") {
