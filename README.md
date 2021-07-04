@@ -1,4 +1,4 @@
-# Jobguy Discover Extension V1.0
+# Jobguy Discover Extension (Firefox)
 Jobguy discover is an open-source based on jobguy.work API to receive company information from the popular Iranian job websites and find their information on Jobguy.
 
 Supported webpages:
