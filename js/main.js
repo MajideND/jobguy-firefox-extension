@@ -9,7 +9,15 @@ browser.runtime.onMessage.addListener(request => {
   }
 
   if (request.web_type == "quera_1") {
-    var company_name = document.querySelectorAll('h1.header')[0];
+    var company_name = document.getElementsByClassName("chakra-link")[0];
+    if (company_name) {
+      company_name = company_name.innerHTML;
+      response = { status: true, company_name: company_name };
+    }
+  }
+
+  if (request == "quera_2") {
+    var company_name = document.getElementsByClassName('chakra-heading')[0];
     if (company_name) {
       company_name = company_name.innerHTML;
       response = { status: true, company_name: company_name };

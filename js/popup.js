@@ -37,6 +37,18 @@ function get_company_name_from_jobvision_1(path_url, url, tab_id) {
     .catch(onError);
 }
 
+function get_company_name_from_quera_2(path_url, url, tab_id) {
+  browser.tabs
+    .sendMessage(tab_id, { web_type: "quera_2" })
+    .then(response => {
+      if (response.status == true) {
+        var company_name = response.company_name.trim();
+        jobguy_request(company_name);
+      }
+    })
+    .catch(onError);
+}
+
 function get_company_name_from_quera_1(path_url, url, tab_id) {
   browser.tabs
     .sendMessage(tab_id, { web_type: "quera_1" })
@@ -54,6 +66,8 @@ function getinfo_quera(url, tab_id) {
     $(".link-to-jobguy").prop("disabled", false);
     var path_url = url.replace(/^.*\/\/[^\/]+/, "");
     if (path_url.startsWith("/careers/company")) {
+      get_company_name_from_quera_2(path_url, url, tab_id);
+    }else if (path_url.startsWith("/careers/job")) {
       get_company_name_from_quera_1(path_url, url, tab_id);
     }
   });
