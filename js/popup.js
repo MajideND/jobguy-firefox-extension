@@ -37,6 +37,18 @@ function get_company_name_from_jobvision_1(path_url, url, tab_id) {
     .catch(onError);
 }
 
+function get_company_name_from_quera_2(path_url, url, tab_id) {
+  browser.tabs
+    .sendMessage(tab_id, { web_type: "quera_2" })
+    .then(response => {
+      if (response.status == true) {
+        var company_name = response.company_name.trim();
+        jobguy_request(company_name);
+      }
+    })
+    .catch(onError);
+}
+
 function get_company_name_from_quera_1(path_url, url, tab_id) {
   browser.tabs
     .sendMessage(tab_id, { web_type: "quera_1" })
@@ -54,6 +66,8 @@ function getinfo_quera(url, tab_id) {
     $(".link-to-jobguy").prop("disabled", false);
     var path_url = url.replace(/^.*\/\/[^\/]+/, "");
     if (path_url.startsWith("/careers/company")) {
+      get_company_name_from_quera_2(path_url, url, tab_id);
+    }else if (path_url.startsWith("/careers/job")) {
       get_company_name_from_quera_1(path_url, url, tab_id);
     }
   });
@@ -102,8 +116,19 @@ function onGot(data) {
   $(".link-to-jobguy").prop("disabled", true);
 }
 function onError(error) {
-  console.log(error);
+  // console.log(error);
 }
 const current_url = getCurrentURL().then(onGot, onError);
 
-console.log("change detected");
+$(document).on("click",".show-reviews",function () {
+  $(".reviews").show();
+  $(".interviews").hide();
+  $(".show-reviews").parent().addClass("is-active");
+  $(".show-interviews").parent().removeClass("is-active");
+});
+$(document).on("click",".show-interviews",function () {
+  $(".interviews").show();
+  $(".reviews").hide();
+  $(".show-interviews").parent().addClass("is-active");
+  $(".show-reviews").parent().removeClass("is-active");
+});
