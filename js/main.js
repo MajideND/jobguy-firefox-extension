@@ -16,7 +16,7 @@ browser.runtime.onMessage.addListener(request => {
     }
   }
 
-  if (request == "quera_2") {
+  if (request.web_type == "quera_2") {
     var company_name = document.getElementsByClassName('chakra-heading')[0];
     if (company_name) {
       company_name = company_name.innerHTML;
